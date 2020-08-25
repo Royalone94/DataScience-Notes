@@ -31,3 +31,13 @@ P = df[(df['W']>0) | (df['Y']>1)]
 newind = 'CA NY WY OR CO'.split()
 df['States'] = newind
 df2 = df.set_index('States')
+
+
+#new dataframe
+outside = ['G1', 'G1', 'G1', 'G2', 'G2', 'G2']
+inside = [1,2,3,1,2,3]
+hier_index = list(zip(outside,inside))
+hier_index = pd.MultiIndex.from_tuples(hier_index)
+df_multi = pd.DataFrame(randn(6,2), hier_index, ['A', 'B'])
+Q = df_multi.loc['G1']
+R = df_multi.index.names = ['Groups', 'Num']
